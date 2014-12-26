@@ -13,7 +13,7 @@ app.use(bodyParser.json());
 
 
 var mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/TimeSheetDB');
+mongoose.connect('mongodb://root:FbVQsj0Zx2LW@localhost/TimeSheetDB');
 
 
 var fs = require('fs');
