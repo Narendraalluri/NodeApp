@@ -15,6 +15,8 @@ app.use(bodyParser.json());
 var mongoose = require('mongoose');
 mongoose.connect('mongodb://root:FbVQsj0Zx2LW@localhost/admin');
 
+//mongoose.connect('mongodb://localhost/TimeSheetSB');
+
 
 var fs = require('fs');
 var timeSheet = mongoose.model('TimeSheet', { name: String , startDate : String, monday : String, tuesday : String, wednesday : String, thursday : String, friday : String, saturday : String, sunday : String,  content : Buffer, originalName: String});
