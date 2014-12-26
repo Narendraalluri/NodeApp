@@ -63,7 +63,7 @@ app.post('/file-upload', function(req, res) {
         ts.originalName = req.files.timesheet.originalname;
         ts.save(function (err) {
             if (err) // ...
-                console.log('meow');
+                console.log(err);
 
             fs.unlink(tmp_path, function(err) {
                 if (err) throw err;
