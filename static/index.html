@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script>
+
+function drawTable(data) {
+    var rows = [];
+
+    for (var i = 0; i < data.length; i++) {
+        rows.push(drawRow(data[i]));
+    }
+
+    $("#personDataTable").append(rows);
+}
+
+function drawRow(rowData) {
+    var row = $("<tr />")
+    row.append($("<td>" + rowData.name + "</td>"));
+    row.append($("<td>" + rowData.startDate + "</td>"));
+    row.append($("<td>" + rowData.monday + "</td>"));
+    row.append($("<td>" + rowData.tuesday + "</td>"));
+    row.append($("<td>" + rowData.wednesday + "</td>"));
+    row.append($("<td>" + rowData.thursday + "</td>"));
+    row.append($("<td>" + rowData.friday + "</td>"));
+    row.append($("<td>" + rowData.saturday + "</td>"));
+    row.append($("<td>" + rowData.sunday + "</td>"));
+    row.append($("<td><a href='showFile?id="+rowData._id+"&originalName="+rowData.originalName+"'>"+rowData.originalName+"</a></td>"));
+
+    return row;
+}
+
+$(document).ready(function(){
+    $.ajax({url:"showTimesheets",success:function(result){
+        drawTable(result)
+      //$("#div1").html(result);
+    }});
+});
+</script>
+</head>
+<body>
+<table id="personDataTable" name="personDataTable" border=1>
+    <thead>
+        <th>User Name</th>
+        <th>Start Date</th>
+        <th>Monday</th>
+        <th>Tuesday</th>
+        <th>Wednesday</th>
+        <th>Thursday</th>
+        <th>Friday</th>
+        <th>Saturday</th>
+        <th>Sunday</th>
+        <th>Uploaded File</th>
+    </thead>
+</table>
+
+<a href="timesheets.html">Add Timesheets</a>
+
+</body>
+</html>
+
+

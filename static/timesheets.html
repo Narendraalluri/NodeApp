@@ -1,0 +1,40 @@
+<html>
+<head>
+    <title>Create TimeSheet</title>
+      <meta charset="utf-8">
+	  <title>jQuery UI Datepicker - Default functionality</title>
+	  <link rel="stylesheet" href="//code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
+	  <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+	  <script src="//code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
+	  <link rel="stylesheet" href="/resources/demos/style.css">
+	  <script>
+	  $(function() {
+	    $( "#startDate" ).datepicker({
+        beforeShowDay: function(date){ 
+				  var day = date.getDay(); 
+				  return [day == 1 ,""];
+				}
+    		});
+
+	  });
+  </script>
+
+</head>
+<body>
+
+<form method="post" enctype="multipart/form-data" action="/file-upload">
+    User Name : <input type="text" name="username">
+    <br>Start Date : <input type="text" name="startDate" id="startDate">
+    <br>Monday : <input type="text" name="monday">
+    <br>Tuesday : <input type="text" name="tuesday">
+    <br>Wednesday : <input type="text" name="wednesday">
+    <br>Thursday : <input type="text" name="thursday">
+    <br>Friday : <input type="text" name="friday">
+    <br>Saturday : <input type="text" name="saturday">
+    <br>Sunday : <input type="text" name="sunday">
+    <br>Upload File  : <input type="file" name="timesheet">
+    <input type="submit">
+</form>
+
+</body>
+</html>
