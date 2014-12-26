@@ -13,9 +13,9 @@ app.use(bodyParser.json());
 
 
 var mongoose = require('mongoose');
-mongoose.connect('mongodb://root:FbVQsj0Zx2LW@localhost/admin');
+//mongoose.connect('mongodb://root:FbVQsj0Zx2LW@localhost/admin');
 
-//mongoose.connect('mongodb://localhost/TimeSheetSB');
+mongoose.connect('mongodb://localhost/TimeSheetSB');
 
 
 var fs = require('fs');

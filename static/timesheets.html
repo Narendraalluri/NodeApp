@@ -8,6 +8,15 @@
 	  <script src="//code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
 	  <link rel="stylesheet" href="/resources/demos/style.css">
 	  <script>
+
+	  function validateForm() {
+    var x = document.forms["myForm"]["timesheet"].value;
+    if (x == null || x == "") {
+        alert("File must be uploaded");
+        return false;
+    }
+}
+
 	  $(function() {
 	    $( "#startDate" ).datepicker({
         beforeShowDay: function(date){ 
@@ -22,7 +31,7 @@
 </head>
 <body>
 
-<form method="post" enctype="multipart/form-data" action="/file-upload">
+<form method="post" enctype="multipart/form-data" action="/file-upload" name="myForm"  onsubmit="return validateForm()">
     User Name : <input type="text" name="username">
     <br>Start Date : <input type="text" name="startDate" id="startDate">
     <br>Monday : <input type="text" name="monday" value="8">
