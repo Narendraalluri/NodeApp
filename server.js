@@ -13,13 +13,15 @@ app.use(bodyParser.json());
 
 
 var mongoose = require('mongoose');
-//mongoose.connect('mongodb://root:FbVQsj0Zx2LW@localhost/admin');
+mongoose.connect('mongodb://root:FbVQsj0Zx2LW@localhost/admin');
 
-mongoose.connect('mongodb://localhost/TimeSheetSB');
+//mongoose.connect('mongodb://localhost/TimeSheetDB');
 
 
 var fs = require('fs');
 var timeSheet = mongoose.model('TimeSheet', { name: String , startDate : String, monday : String, tuesday : String, wednesday : String, thursday : String, friday : String, saturday : String, sunday : String,  content : Buffer, originalName: String});
+
+var user = mongoose.model('User', { firstName: String , lastName : String, email : String, password : String, role : String});
 
 app.get('/showTimesheets', function(req, res) {
     timeSheet.find({},'name originalName startDate monday tuesday wednesday thursday friday saturday sunday _id', function(err, data) {
@@ -28,6 +30,27 @@ app.get('/showTimesheets', function(req, res) {
 
     });
 });
+
+app.get('/showUsers', function(req, res) {
+    user.find({}, function(err, data) {
+
+        res.json(data);
+
+    });
+});
+
+app.post('/loginUser', function(req, res) {
+    console.log(req.body)
+    user.findOne({email : req.body.email, password : req.body.password}, function(err, data) {
+    if (err) res.sendfile(html_dir + '/login.html?failed=true');;
+       res.sendfile(html_dir + '/userWelcome.html');
+        
+    });
+        
+
+    });
+
+
 
 app.get('/showFile', function(req, res) {
     timeSheet.findOne({_id : req.query.id}, function(err, data) {
@@ -40,6 +63,24 @@ app.get('/showFile', function(req, res) {
         
 
     });
+
+app.post('/addUser', function(req, res) {
+    var newUser = new user;
+    console.log(req.body)
+    newUser.firstName = req.body.firstName;
+    newUser.lastName = req.body.lastName;
+    newUser.email = req.body.email;
+    newUser.password = req.body.password;
+    newUser.role = req.body.role;
+    newUser.save(function (err) {
+            if (err) // ...
+                console.log(err);
+           
+
+    });
+
+    res.sendfile(html_dir + '/Users.html');
+});
 
 
 app.post('/file-upload', function(req, res) {

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Employee List</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+<style type="text/css">
+    .bs-example{
+    	margin: 20px;
+    }
+</style>
+
+
+<script>
+var count = 1;
+function drawTable(data) {
+    var rows = [];
+    for (var i = 0; i < data.length; i++) {
+        rows.push(drawRow(data[i]));
+    }
+
+    $("#userList").append(rows);
+}
+
+function drawRow(rowData) {
+    var row = $("<tr />")
+    row.append($("<td>" + (count++) + "</td>"));
+    row.append($("<td>" + rowData.firstName + "</td>"));
+    row.append($("<td>" + rowData.lastName + "</td>"));
+    row.append($("<td>" + rowData.email + "</td>"));
+    
+
+    return row;
+}
+$(document).ready(function(){
+    $.ajax({url:"showUsers",success:function(result){
+        drawTable(result)
+      //$("#div1").html(result);
+    }});
+});
+</script>
+</head>
+<body>
+<div class="bs-example">
+    <table class="table table-striped" >
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Email</th>
+            </tr>
+        </thead>
+        <tbody id="userList" name="userList">
+           
+        </tbody>
+    </table>
+</div>
+</body>
+</html>                                		
