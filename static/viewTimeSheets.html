@@ -38,7 +38,7 @@ function drawRow(rowData) {
     row.append($("<td>" + rowData.saturday + "</td>"));
     row.append($("<td>" + rowData.clientApproved + "</td>"));
     row.append($("<td><a href='showFile?id="+rowData._id+"'>" + rowData.originalName + "</a></td>"));
-    row.append($("<td><a href='editTimeSheet.html?id="+rowData._id+"'>Edit</td>"));
+    row.append($("<td><a href='editTimesheet.html?id="+rowData._id+"&userId='+>Edit</td>"));
     row.append($("<td><a href='deleteTimeSheet?id="+rowData._id+"'>Delete</td>"));
     
 
