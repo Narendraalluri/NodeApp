@@ -15,9 +15,9 @@ app.use(express.session({secret: '1234567890QWERTY'}));
 
 
 var mongoose = require('mongoose');
-//mongoose.connect('mongodb://root:FbVQsj0Zx2LW@localhost/admin');
+mongoose.connect('mongodb://root:FbVQsj0Zx2LW@localhost/admin');
 
-mongoose.connect('mongodb://localhost/TimeSheetDB');
+//mongoose.connect('mongodb://localhost/TimeSheetDB');
 
 
 var fs = require('fs');
