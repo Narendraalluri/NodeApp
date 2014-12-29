@@ -25,19 +25,15 @@ function drawTable(data) {
 
 function drawRow(rowData) {
     var row = $("<tr />")
-    row.append($("<td><a href='"+rowData.link+"'>" + rowData.name + "</a></td>"));
+    row.append($("<td>" + rowData.name + "</td>"));
    
 
     return row;
 }
 $(document).ready(function(){
-    $.ajax({url:"showOptions",success:function(result){
+    $.ajax({url:"showOtions",success:function(result){
         drawTable(result)
       //$("#div1").html(result);
-    }});
-    $.ajax({url:"getLoggedInUser",success:function(result){
-
-        $("#sessionUser").html(result.userFirstName) 
     }});
 });
 </script>
@@ -47,7 +43,7 @@ $(document).ready(function(){
     <table class="table table-striped" >
         <thead>
             <tr>
-                <th>Welcome, <span id="sessionUser" name="sessionUser"></span></th>
+                <th>Options</th>
                 
             </tr>
         </thead>

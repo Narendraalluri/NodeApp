@@ -1,0 +1,173 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Create Timesheet</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
+    <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+    <script src="//code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
+    <link rel="stylesheet" href="/resources/demos/style.css">
+    <script>
+
+    function validateForm() {
+    var x = document.forms["myForm"]["timesheet"].value;
+    if (x == null || x == "") {
+        alert("File must be uploaded");
+        return false;
+    }
+}
+
+function formatDate(dateVal){
+
+  mon = (dateVal.getMonth()+1)
+  if(mon < 10 ){
+    mon = "0"+mon
+  }
+  dateValDate = dateVal.getDate();
+  if(dateValDate < 10){
+    dateValDate = "0"+dateValDate
+  }
+  return mon+"/"+dateValDate+"/"+(dateVal.getYear()+1900)
+}
+    $(function() {
+      $( "#startDate" ).datepicker({
+        beforeShowDay: function(date){ 
+          var day = date.getDay(); 
+          return [day == 0 ,""];
+        },
+        onSelect: function(date) {
+            selectedDate = new Date(date)
+            mondayDate = new Date(date)
+            tuesdayDate = new Date(date)
+            wednesdayDate = new Date(date)
+            thurdayDate = new Date(date)
+            fridayDate = new Date(date)
+            saturdayDate = new Date(date)
+            mondayDate.setDate(selectedDate.getDate()+1)
+            tuesdayDate.setDate(selectedDate.getDate()+2)
+            wednesdayDate.setDate(selectedDate.getDate()+3)
+            thurdayDate.setDate(selectedDate.getDate()+4)
+            fridayDate.setDate(selectedDate.getDate()+5)
+            saturdayDate.setDate(selectedDate.getDate()+6)
+
+            endDate = new Date(date)
+            endDate.setDate(endDate.getDate()+6)
+            $( "#endDate" ).val(formatDate(endDate))
+
+            $("#sundayDate").html(formatDate(selectedDate))
+            $("#mondayDate").html(formatDate(mondayDate))
+            $("#tuesdayDate").html(formatDate(tuesdayDate))
+            $("#wednesdayDate").html(formatDate(wednesdayDate))
+            $("#thursdayDate").html(formatDate(thurdayDate))
+            $("#fridayDate").html(formatDate(fridayDate))
+            $("#saturdayDate").html(formatDate(saturdayDate))
+
+            $("#sunday").attr("placeholder", "Enter Sunday Hours - "+formatDate(selectedDate) );
+            $("#monday").attr("placeholder", "Enter Monday Hours - "+formatDate(mondayDate) );
+            $("#tuesday").attr("placeholder", "Enter Tuesday Hours - "+formatDate(tuesdayDate) );
+            $("#wednesday").attr("placeholder", "Enter Wednesday Hours - "+formatDate(wednesdayDate) );
+            $("#thurday").attr("placeholder", "Enter Thursday Hours - "+formatDate(thurdayDate) );
+            $("#friday").attr("placeholder", "Enter Friday Hours - "+formatDate(fridayDate) );
+            $("#saturday").attr("placeholder", "Enter Saturday Hours - "+formatDate(saturdayDate) );
+
+        }
+        });
+    });
+  </script>
+</head>
+<body>
+
+<div class="container">
+  <h2>Create Timesheet</h2>
+  <form  class="form-horizontal" role="form" action="/addTimeSheet" method="post" enctype="multipart/form-data" name="createUser">
+    
+    <div class="form-group">
+      <label for="startDate" class="control-label col-xs-2">Start Date</label>
+      <div class="col-xs-6">
+        <input type="date" class="form-control" id="startDate" name="startDate" placeholder="Enter Start Date">
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="endDate" class="control-label col-xs-2">End Date</label>
+      <div class="col-xs-6">
+        <input type="text" class="form-control" id="endDate" name="endDate" placeholder="Enter End Date" readonly>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="endDate" class="control-label col-xs-2">Sunday <span id="sundayDate"></span></label>
+        <div class="col-xs-6">
+      <input type="number" class="form-control" id="sunday" name="sunday" placeholder="Enter Sunday Hours">
+    </div>
+    </div>
+    <div class="form-group">
+      <label for="endDate" class="control-label col-xs-2">Monday <span id="mondayDate"></span></label>
+        <div class="col-xs-6">
+      <input type="number" class="form-control" id="monday" name="monday" placeholder="Enter Monday Hours">
+    </div>
+    </div>
+    <div class="form-group">
+      <label for="endDate" class="control-label col-xs-2">Tuesday <span id="tuesdayDate"></span></label>
+        <div class="col-xs-6">
+      <input type="number" class="form-control" id="tuesday" name="tuesday" placeholder="Enter Tuesday Hours">
+    </div>
+    </div>
+    <div class="form-group">
+      <label for="endDate" class="control-label col-xs-2">Wednesday <span id="wednesdayDate"></span></label>
+        <div class="col-xs-6">
+      <input type="number" class="form-control" id="wednesday" name="wednesday" placeholder="Enter Wednesday Hours">
+    </div>
+    </div>
+    <div class="form-group">
+      <label for="endDate" class="control-label col-xs-2">Thursday <span id="thursdayDate"></span></label>
+        <div class="col-xs-6">
+      <input type="number" class="form-control" id="thursday" name="thursday" placeholder="Enter Thursday Hours">
+    </div>
+    </div>
+    <div class="form-group">
+      <label for="endDate" class="control-label col-xs-2">Friday <span id="fridayDate"></span></label>
+        <div class="col-xs-6">
+      <input type="number" class="form-control" id="friday" name="friday" placeholder="Enter Friday Hours">
+    </div>
+    </div>
+    <div class="form-group">
+      <label for="endDate" class="control-label col-xs-2">Saturday <span id="saturdayDate"></span></label>
+        <div class="col-xs-6">
+      <input type="number" class="form-control" id="saturday" name="saturday" placeholder="Enter Saturday Hours">
+    </div>
+    </div>
+
+<div class="form-group">
+      <label for="clientApproved" class="control-label col-xs-2">Client Approved</label>
+        <div class="col-xs-6">
+<select class="form-control" name="clientApproved" id="clientApproved" >
+    <option value="yes">Yes</option>
+    <option value="no">No</option>
+    
+</select>     </div>
+    </div>
+
+     <div class="form-group">
+      <label for="endDate" class="control-label col-xs-2">Upload Files</label>
+        <div class="col-xs-6">
+      <input type="file" class="form-control" id="timesheet" name="timesheet" placeholder="Upload File">
+    </div>
+    </div>
+    <div class="form-group">
+      <label for="endDate" class="control-label col-xs-4"></label>
+        <div class="col-xs-6">
+    <button type="submit" class="btn btn-default">Submit</button>
+  </div>
+</div>
+  </form>
+</div>
+
+</body>
+</html>

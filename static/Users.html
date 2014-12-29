@@ -30,7 +30,10 @@ function drawRow(rowData) {
     row.append($("<td>" + (count++) + "</td>"));
     row.append($("<td>" + rowData.firstName + "</td>"));
     row.append($("<td>" + rowData.lastName + "</td>"));
-    row.append($("<td>" + rowData.email + "</td>"));
+    row.append($("<td><a href='viewTimeSheets.html?id="+rowData._id+"'>" + rowData.email + "</a></td>"));
+    row.append($("<td><a href='editUser.html?id="+rowData._id+"'>Edit User</a></td>"));
+    row.append($("<td><a href='deleteUser?id="+rowData._id+"'>Delete User</a></td>"));
+
     
 
     return row;
@@ -52,6 +55,8 @@ $(document).ready(function(){
                 <th>First Name</th>
                 <th>Last Name</th>
                 <th>Email</th>
+                <th>Edit</th>
+                <th>Delete</th>
             </tr>
         </thead>
         <tbody id="userList" name="userList">
