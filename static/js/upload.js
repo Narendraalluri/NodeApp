@@ -1,52 +1,56 @@
-$(function () {
-    status('choose a file');
-    var timerId;
+try{
+(function () {
+    var input = document.getElementById("timesheetFile"), 
+        formdata = false;
+alert(input)
+    function showUploadedItem (source) {
+        var list = document.getElementById("image-list"),
+            li   = document.createElement("li"),
+            img  = document.createElement("img");
+        img.src = source;
+        li.appendChild(img);
+        list.appendChild(li);
+    }   
 
-    function setTimer() {
-        timerId = setInterval(function () {
-            if ($('#userFileInput').val() !== '') {
-                clearInterval(timerId);
-                $('#uploadForm').submit();
-            }
-        }, 500);
+    if (window.FormData) {
+        formdata = new FormData();
+       // document.getElementById("btn").style.display = "none";
     }
+    
+    input.addEventListener("change", function (evt) {
+        document.getElementById("response").innerHTML = "Uploading . . ."
+        var i = 0, len = this.files.length, img, reader, file;
+    
+        for ( ; i < len; i++ ) {
+            file = this.files[i];
+    
+            if (!!file.type.match(/image.*/)) {
+                if ( window.FileReader ) {
+                    reader = new FileReader();
+                    reader.onloadend = function (e) { 
+                        showUploadedItem(e.target.result, file.fileName);
+                    };
+                    reader.readAsDataURL(file);
+                }
+                if (formdata) {
+                    formdata.append("timesheetFile", file);
+                }
+            }   
+        }
+    
+        if (formdata) {
+            $.ajax({
+                url: "uploadFile",
+                type: "POST",
+                data: formdata,
+                processData: false,
+                contentType: false,
+                success: function (res) {
+                    document.getElementById("response").innerHTML = res; 
+                }
+            });
+        }
+    }, false);
+}());
 
-    function setProgress(percent) {
-        $('#percent').html(percent + '%');
-        $('#bar').css('width', percent + '%');
-    }
-
-    setTimer();
-    $('#uploadForm').submit(function () {
-        status('0%');
-        var formData = new FormData();
-        var file = document.getElementById('userFileInput').files[0];
-        formData.append('userFile', file);
-        var xhr = new XMLHttpRequest();
-        xhr.overrideMimeType('application/json');
-        xhr.open('post', '/api/upload', true);
-        xhr.upload.onprogress = function (e) {
-            if (e.lengthComputable)
-                setProgress(Math.round((e.loaded / e.total) * 100));
-        };
-        xhr.onerror = function (e) {
-            status('error while trying to upload');
-        };
-        xhr.onload = function () {
-            $('#userFileInput').val('');
-            setProgress(0);
-            var resJson = JSON.parse(xhr.responseText);
-            status(resJson.file + ' done, choose a file');
-            setTimer();
-            if (resJson.image)
-                window.open('./uploads/' + resJson.savedAs, 'upload', 'status=1, height = 300, width = 300, resizable = 0');
-            else
-                console.log('not an image');
-        };
-        xhr.send(formData);
-        return false; // no refresh
-    });
-    function status(message) {
-        $('#status').text(message);
-    }
-});
+}catch(e){alert(e.message)}

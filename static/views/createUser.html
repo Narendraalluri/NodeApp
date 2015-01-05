@@ -1,0 +1,43 @@
+
+<body>
+
+<div class="container"  style="width:400px">
+  <form role="form" ng-submit="addUser(createUser.$valid,createUser.email,createUser.password,createUser.firstName, createUser.lastName, createUser.role)"  name="createUser"  
+   ng-controller="addUserController">
+   <p class="error" ng-show="addFailed">Email already exists</p>
+    <br>
+    <div class="form-group" ng-class="{ 'has-error' : createUser.firstName.$invalid && !createUser.firstName.$pristine }">
+      <input type="firstName" class="form-control" ng-model="firstName" autofocus id="firstName" name="firstName" placeholder="First Name" required>
+      <p ng-show="createUser.firstName.$invalid && !createUser.firstName.$pristine" class="help-block">Enter a valid First Name.</p>
+    </div>
+    <div class="form-group" ng-class="{ 'has-error' : createUser.lastName.$invalid && !createUser.lastName.$pristine }">
+      <input type="lastName" class="form-control" ng-model="lastName" id="lastName" name="lastName" placeholder="Last Name" required>
+      <p ng-show="createUser.lastName.$invalid && !createUser.lastName.$pristine" class="help-block">Enter a valid Last Name.</p>
+    </div>
+    <div class="form-group" ng-class="{ 'has-error' : createUser.email.$invalid && !createUser.email.$pristine }">
+      <input type="email" class="form-control" ng-model="email" id="email" name="email" placeholder="Enter email" required>
+      <p ng-show="createUser.email.$invalid && !createUser.email.$pristine" class="help-block">Enter a valid email.</p>
+    </div>
+    <div class="form-group" ng-class="{ 'has-error' : createUser.password.$invalid && !createUser.password.$pristine }">
+      <input type="password" class="form-control"  ng-model="password" id="password" name="password" placeholder="Enter password" required>
+      <p ng-show="createUser.password.$invalid && !createUser.password.$pristine" class="help-block">Enter a valid password.</p>
+    </div>
+    <div class="form-group">
+ <select class="form-control" name="role"   ng-model="role"  id="role" placeholder="Enter Role">
+    <option value="admin">Admin</option>
+    <option value="employee" ng-selected="true">Employee</option>
+    
+</select>    </div>
+
+
+
+<div align="center">
+    <button type="submit" class="btn btn-primary">Add User</button>
+</div>
+  </form>
+
+  
+
+</div>
+<br>
+

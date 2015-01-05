@@ -1,0 +1,46 @@
+
+
+<div class="container"  style="width:400px">
+  <form role="form" ng-submit="updateUserFunc(updateUser.$valid,updateUser.email,updateUser.password,updateUser.firstName, updateUser.lastName, updateUser.role)"  name="updateUser"  
+   ng-controller="updateUserController">
+   <p class="error" ng-show="updateFailed">Update Failed</p>
+    <br>
+    <div class="form-group" ng-class="{ 'has-error' : updateUser.firstName.$invalid && !updateUser.firstName.$pristine }">
+      <input type="firstName" class="form-control" ng-model="firstName" autofocus id="firstName" name="firstName" placeholder="First Name" required>
+      <p ng-show="updateUser.firstName.$invalid && !updateUser.firstName.$pristine" class="help-block">Enter a valid First Name.</p>
+    </div>
+    <div class="form-group" ng-class="{ 'has-error' : updateUser.lastName.$invalid && !updateUser.lastName.$pristine }">
+      <input type="lastName" class="form-control" ng-model="lastName" id="lastName" name="lastName" placeholder="Last Name" required>
+      <p ng-show="updateUser.lastName.$invalid && !updateUser.lastName.$pristine" class="help-block">Enter a valid Last Name.</p>
+    </div>
+    <div class="form-group" ng-class="{ 'has-error' : updateUser.email.$invalid && !updateUser.email.$pristine }">
+      <input type="email" class="form-control" ng-model="email" id="email" name="email" placeholder="Enter email" required>
+      <p ng-show="updateUser.email.$invalid && !updateUser.email.$pristine" class="help-block">Enter a valid email.</p>
+    </div>
+    <div class="form-group" ng-class="{ 'has-error' : updateUser.password.$invalid && !updateUser.password.$pristine }">
+      <input type="password" class="form-control"  ng-model="password" id="password" name="password" placeholder="Enter password" required>
+      <p ng-show="updateUser.password.$invalid && !updateUser.password.$pristine" class="help-block">Enter a valid password.</p>
+    </div>
+    <div class="form-group">
+ <select class="form-control" name="role"   ng-model="role"  id="role" placeholder="Enter Role">
+    <option value="admin">Admin</option>
+    <option value="employee" ng-selected="true">Employee</option>
+    
+</select>    </div>
+
+
+    <div class="buttonBar" align="center">
+               <button type="submit" class="btn btn-primary">Save User</button>
+                <button class="btn btn-danger" ng-click="deleteUser()">Delete User</button>
+
+
+      </div>
+
+
+  </form>
+
+  
+
+</div>
+<br>
+

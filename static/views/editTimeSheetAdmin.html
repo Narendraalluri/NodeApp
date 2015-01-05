@@ -1,0 +1,277 @@
+<style type="text/css">
+
+
+option {
+ color: white; 
+ background-color: blue;
+}
+
+@font-face {
+  font-family: 'Glyphicons Halflings';
+
+  src: url('http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/fonts/glyphicons-halflings-regular.eot');
+  src: url('http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/fonts/glyphicons-halflings-regular.eot?#iefix') format('embedded-opentype'), url('http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/fonts/glyphicons-halflings-regular.woff') format('woff'), url('http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/fonts/glyphicons-halflings-regular.ttf') format('truetype'), url('http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/fonts/glyphicons-halflings-regular.svg#glyphicons_halflingsregular') format('svg');
+}
+
+.glyphicon {
+  position: relative;
+  top: 1px;
+  display: inline-block;
+  font-family: 'Glyphicons Halflings';
+  font-style: normal;
+  font-weight: normal;
+  line-height: 1;
+
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+.glyphicon-asterisk:before {
+  content: "\2a";
+}
+.glyphicon-plus:before {
+  content: "\2b";
+}
+.glyphicon-euro:before {
+  content: "\20ac";
+}
+.glyphicon-minus:before {
+  content: "\2212";
+}
+
+.glyphicon-minus-sign:before {
+  content: "\e082";
+}
+
+.glyphicon-remove:before {
+  content: "\e014";
+}
+</style>
+<div class="container"style="width:800px">
+ 
+  <form  class="centered-form" role="form"  method="post" ng-submit="saveTimesheet()" enctype="multipart/form-data" name="timesheet" >
+    <div class="form-group">
+      
+    </div>
+    <div class="form-group">
+    	<label for="startDate" class="control-label col-lg-2">Start Date</label>
+      <div class="col-lg-3">
+        <input type="date" class="form-control" jqdatepicker  ng-model="startDate" id="startDate" name="startDate" placeholder="Enter Start Date">
+      </div>
+      <label for="endDate" class="control-label col-lg-2">End Date</label>
+      <div class="col-lg-3">
+        <input type="text" class="form-control" id="endDate" ng-model="endDate" name="endDate" placeholder="Enter End Date" readonly>
+      </div>
+      <a class="btn btn-default" ng-click="incrementCounter()">Add Row</a>
+    </div>
+       <br>
+ <table class="table table-striped" >
+        <thead>
+            <tr>
+                <th width=20%>Project</th>
+                <th width=10%>Sunday</th>
+                <th width=10%>Monday</th>
+                <th width=10%>Tuesday</th>
+                <th width=10%>Wednesday</th>
+                <th width=10%>Thursday</th>
+                <th width=10%>Friday</th>
+                <th width=10%>Saturday</th>
+                <th width=10%>Total</th>
+                <th width=10%>Delete</th>
+            </tr>
+        </thead>
+        <tbody >
+            <tr>
+                <td> <div class="col-md-2"><select ng-model="sheetsVal[0].project" class="form-control">
+					      <option value="1">Project1</option>
+					      <option value="2">Project2</option>
+					    </select></div></td>
+				<td><div class="col-md-2"><select ng-model="sheetsVal[0].sunday" class="form-control">
+					<option value="0" selected>0</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option>
+				</select></div></td>
+				<td><div class="col-md-2"><select ng-model="sheetsVal[0].monday" class="form-control">
+					<option value="0" selected>0</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option  value="8">8</option>
+				</select></div></td>
+				<td><div class="col-md-2"><select ng-model="sheetsVal[0].tuesday" class="form-control">
+					<option value="0" selected>0</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option  value="8">8</option>
+				</select></div></td>
+				<td><div class="col-md-2"><select ng-model="sheetsVal[0].wednesday" class="form-control">
+					<option value="0" selected>0</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option   value="8">8</option>
+				</select></div></td>
+				<td><div class="col-md-2"><select ng-model="sheetsVal[0].thursday" class="form-control">
+					<option value="0" selected>0</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option  value="8">8</option>
+				</select></div></td>
+				<td><div class="col-md-2"><select ng-model="sheetsVal[0].friday" class="form-control">
+					<option value="0" selected>0</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option  value="8">8</option>
+				</select></div></td>
+				<td><div class="col-md-2"><select ng-model="sheetsVal[0].saturday" class="form-control">
+					<option value="0" selected>0</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option>
+				</select></div></td>
+				<td><div class="col-lg"><input type="text" ng-model="sheetsVal[0].total" class="form-control" readonly></div></td>
+				<td>&nbsp;</td>
+                
+            </tr>
+
+            <tr ng-show="sheetsVal[1].status">
+                <td> <div class="col-md-2"><select ng-model="sheetsVal[1].project" class="form-control">
+					      <option value="1">Project1</option>
+					      <option value="2">Project2</option>
+					    </select></div></td>
+				<td><div class="col-md-2"><select ng-model="sheetsVal[1].sunday" class="form-control">
+					<option value="0" selected>0</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option>
+				</select></div></td>
+				<td><div class="col-md-2"><select ng-model="sheetsVal[1].monday" class="form-control">
+					<option value="0" selected>0</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option  value="8">8</option>
+				</select></div></td>
+				<td><div class="col-md-2"><select ng-model="sheetsVal[1].tuesday" class="form-control">
+					<option value="0" selected>0</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option  value="8">8</option>
+				</select></div></td>
+				<td><div class="col-md-2"><select ng-model="sheetsVal[1].wednesday" class="form-control">
+					<option value="0" selected>0</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option   value="8">8</option>
+				</select></div></td>
+				<td><div class="col-md-2"><select ng-model="sheetsVal[1].thursday" class="form-control">
+					<option value="0" selected>0</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option  value="8">8</option>
+				</select></div></td>
+				<td><div class="col-md-2"><select ng-model="sheetsVal[1].friday" class="form-control">
+					<option value="0" selected>0</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option  value="8">8</option>
+				</select></div></td>
+				<td><div class="col-md-2"><select ng-model="sheetsVal[1].saturday" class="form-control">
+					<option value="0" selected>0</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option>
+				</select></div></td>
+				<td><div class="col-lg"><input type="text" ng-model="sheetsVal[1].total" class="form-control" readonly></div></td>
+				<td><div class="col-md-2"><a ng-click="removeSheet(1)"><span class="glyphicon glyphicon-remove"></span></a></div></td>
+                
+            </tr>
+
+            <tr ng-show="sheetsVal[2].status">
+                <td> <div class="col-md-2"><select ng-model="sheetsVal[2].project" class="form-control">
+					      <option value="1">Project1</option>
+					      <option value="2">Project2</option>
+					    </select></div></td>
+				<td><div class="col-md-2"><select ng-model="sheetsVal[2].sunday" class="form-control">
+					<option value="0" selected>0</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option>
+				</select></div></td>
+				<td><div class="col-md-2"><select ng-model="sheetsVal[2].monday" class="form-control">
+					<option value="0" selected>0</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option  value="8">8</option>
+				</select></div></td>
+				<td><div class="col-md-2"><select ng-model="sheetsVal[2].tuesday" class="form-control">
+					<option value="0" selected>0</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option  value="8">8</option>
+				</select></div></td>
+				<td><div class="col-md-2"><select ng-model="sheetsVal[2].wednesday" class="form-control">
+					<option value="0" selected>0</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option   value="8">8</option>
+				</select></div></td>
+				<td><div class="col-md-2"><select ng-model="sheetsVal[2].thursday" class="form-control">
+					<option value="0" selected>0</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option  value="8">8</option>
+				</select></div></td>
+				<td><div class="col-md-2"><select ng-model="sheetsVal[2].friday" class="form-control">
+					<option value="0" selected>0</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option  value="8">8</option>
+				</select></div></td>
+				<td><div class="col-md-2"><select ng-model="sheetsVal[2].saturday" class="form-control">
+					<option value="0" selected>0</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option>
+				</select></div></td>
+                <td><div class="col-lg"><input type="text" ng-model="sheetsVal[2].total" class="form-control" readonly></div></td>
+				<td><div class="col-md-2"><a ng-click="removeSheet(2)"><span class="glyphicon glyphicon-remove"></span></a></div></td>
+            </tr>
+
+            <tr ng-show="sheetsVal[3].status">
+                <td> <div class="col-md-2"><select ng-model="sheetsVal[3].project" class="form-control">
+					      <option value="1">Project1</option>
+					      <option value="2">Project2</option>
+					    </select></div></td>
+				<td><div class="col-md-2"><select ng-model="sheetsVal[3].sunday" class="form-control">
+					<option value="0" selected>0</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option>
+				</select></div></td>
+				<td><div class="col-md-2"><select ng-model="sheetsVal[3].monday" class="form-control">
+					<option value="0" selected>0</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option  value="8">8</option>
+				</select></div></td>
+				<td><div class="col-md-2"><select ng-model="sheetsVal[3].tuesday" class="form-control">
+					<option value="0" selected>0</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option  value="8">8</option>
+				</select></div></td>
+				<td><div class="col-md-2"><select ng-model="sheetsVal[3].wednesday" class="form-control">
+					<option value="0" selected>0</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option   value="8">8</option>
+				</select></div></td>
+				<td><div class="col-md-2"><select ng-model="sheetsVal[3].thursday" class="form-control">
+					<option value="0" selected>0</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option  value="8">8</option>
+				</select></div></td>
+				<td><div class="col-md-2"><select ng-model="sheetsVal[3].friday" class="form-control">
+					<option value="0" selected>0</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option  value="8">8</option>
+				</select></div></td>
+				<td><div class="col-md-2"><select ng-model="sheetsVal[3].saturday" class="form-control">
+					<option value="0" selected>0</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option>
+				</select></div></td>
+                <td><div class="col-lg"><input type="text" ng-model="sheetsVal[3].total" class="form-control" readonly></div></td>
+				<td><div class="col-md-2"><a ng-click="removeSheet(3)"><span class="glyphicon glyphicon-remove"></span></a></div></td>
+            </tr>
+
+            <tr ng-show="sheetsVal[4].status">
+                <td> <div class="col-md-2"><select ng-model="sheetsVal[4].project" class="form-control">
+					      <option value="1">Project1</option>
+					      <option value="2">Project2</option>
+					    </select></div></td>
+				<td><div class="col-md-2"><select ng-model="sheetsVal[4].sunday" class="form-control">
+					<option value="0" selected>0</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option>
+				</select></div></td>
+				<td><div class="col-md-2"><select ng-model="sheetsVal[4].monday" class="form-control">
+					<option value="0" selected>0</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option  value="8">8</option>
+				</select></div></td>
+				<td><div class="col-md-2"><select ng-model="sheetsVal[4].tuesday" class="form-control">
+					<option value="0" selected>0</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option  value="8">8</option>
+				</select></div></td>
+				<td><div class="col-md-2"><select ng-model="sheetsVal[4].wednesday" class="form-control">
+					<option value="0" selected>0</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option   value="8">8</option>
+				</select></div></td>
+				<td><div class="col-md-2"><select ng-model="sheetsVal[4].thursday" class="form-control">
+					<option value="0" selected>0</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option  value="8">8</option>
+				</select></div></td>
+				<td><div class="col-md-2"><select ng-model="sheetsVal[4].friday" class="form-control">
+					<option value="0" selected>0</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option  value="8">8</option>
+				</select></div></td>
+				<td><div class="col-md-2"><select ng-model="sheetsVal[4].saturday" class="form-control">
+					<option value="0" selected>0</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option>
+				</select></div></td>
+                <td><div class="col-lg"><input type="text" ng-model="sheetsVal[4].total" class="form-control" readonly></div></td>
+				<td><div class="col-md-2"><a ng-click="removeSheet(4)"><span class="glyphicon glyphicon-remove"></span></a></div></td>
+            </tr>
+        </tbody>
+    </table>
+
+   
+<div class="form-group">
+    	<label for="startDate" class="control-label col-lg-2">Client Approved</label>
+      <div class="col-lg-3">
+        <input type="checkbox" ng-model="timesheet.clientApproved"  class="btn-link btn-large"> 
+      </div>
+      <label for="endDate" class="control-label col-lg-2">Total</label>
+      <div class="col-lg-3">
+        <input type="text" ng-model="timesheet.total" class="form-control" readonly>
+      </div>
+    </div>
+
+    <br>
+<div class="form-group">
+    </div>
+
+<div class="form-group">
+  <label for="comment">Comment:</label>
+  <textarea class="form-control" rows="5" id="comments" ng-model="timesheet.comments" ></textarea>
+</div>
+<div class="form-group">
+    <ul id="UploadedFiles">
+        
+    </ul>
+</div>
+     <div class="form-group">
+      <label for="endDate" class="control-label col-xs-2">Upload Files</label>
+        <div class="col-xs-6">
+      <input type="file" name="timesheetFile" id="timesheetFile" >
+
+    </div>
+    </div>
+    <div class="form-group">
+        <div align="center">
+    <button type="submit" class="btn btn-primary active">Save Timesheet</button>
+   <!-- <button type="button" ng-click="approveTimeSheet()" class="btn btn-primary active">Approve Timesheet</button>-->
+  </div>
+</div>
+  </form>
+
+</div>

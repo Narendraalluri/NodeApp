@@ -1,103 +1,68 @@
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-gb" class="no-js js"  >
 
-
-<!DOCTYPE html>
-<html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>Employee List</title>
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+
+<title>TECH KB SOLUTIONS</title>
+<meta charset="utf-8" /><meta name="keywords" content="" />
+<meta name="description" content="" /><!-- this styles only adds some repairs on idevices  -->
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+<link rel="stylesheet" href="css/reset.css" type="text/css" />
+<link rel="stylesheet" href="css/style.css" type="text/css" /><!-- responsive devices styles -->
+<link rel="stylesheet" href="css/responsive-leyouts.css" type="text/css" /><!-- style switcher -->
+<link rel="stylesheet" media="screen" href="js/style-switcher/color-switcher.css" type="text/css" /><!-- ######### JS FILES ######### -->
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
+    <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+    <script src="//code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
+    <link rel="stylesheet" href="/resources/demos/style.css">
+<link rel="stylesheet" href="css/bootstrap.min.css" type="text/css">
+<link rel="stylesheet" href="css/halflings.css" type="text/css">
+<link rel="stylesheet" href="css/style.css" type="text/css">
+
+<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.min.js"></script>
+ <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+  <script src="//code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular-route.js"></script>
+<script src="js/jquery.fileupload.js"></script>
+<script src="js/app.js"></script>
+
+
 <style type="text/css">
-
-body {
-  background-color:#fff;
-  -webkit-font-smoothing: antialiased;
-  font: normal 14px Roboto,arial,sans-serif;
-}
-
-.container {
-    padding: 25px;
-    position: fixed;
-}
-
-.form-login {
-    background-color: #EDEDED;
-    padding-top: 10px;
-    padding-bottom: 20px;
-    padding-left: 20px;
-    padding-right: 20px;
-    border-radius: 15px;
-    border-color:#d2d2d2;
-    border-width: 5px;
-    box-shadow:0 1px 0 #cfcfcf;
-}
-
-h4 { 
- border:0 solid #fff; 
- border-bottom-width:1px;
- padding-bottom:10px;
- text-align: center;
-}
-
-.form-control {
-    border-radius: 10px;
-}
-
-.wrapper {
-    text-align: center;
-}
-
-</style>
-<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
-<script>
-function getUrlVars()
-{
-    var vars = [], hash;
-    var hashes = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
-    for(var i = 0; i < hashes.length; i++)
-    {
-        hash = hashes[i].split('=');
-        vars.push(hash[0]);
-        vars[hash[0]] = hash[1];
-    }
-    return vars;
-}
-
-var failed = getUrlVars()["failed"];
-if(failed == 'true'){
-
-    alert("Invalid userid or password")
-}
-
-
-</script>
+@charset "UTF-8";[ng\:cloak],[ng-cloak],[data-ng-cloak],[x-ng-cloak],.ng-cloak,.x-ng-cloak{display:none;}ng\:form{display:block;}
+		</style>
 </head>
-<body>
-<!--Pulling Awesome Font -->
-  <form role="form" action="/loginUser" method="post"  name="loginUser">
 
-<div class="container">
-    <div class="row">
-        <div class="col-md-offset-5 col-md-3">
-            <div class="form-login">
-            <h4>Login</h4>
-            <input type="text" id="email" name="email" class="form-control input-sm chat-input" placeholder="email" />
-            </br>
-            <input type="password" id="password" name="password" class="form-control input-sm chat-input" placeholder="password" />
-            </br>
-            <div class="wrapper">
-            <span class="group-btn"> 
-                <input type="submit" value="Login">    
-              <!--  <a href="#" class="btn btn-primary btn-md">login <i class="fa fa-sign-in"></i></a>-->
-            </span>
-            </div>
-            </div>
-        
-        </div>
+<body ng-app="myApp">
+
+<div id="page-wrapper">
+
+<div class="container"><!-- header --><!-- logo -->
+    <div class="logo-area"><h1 id="site-logo"><a href="index.html" title="TECH KB SOLUTIONS"></a></h1>
+    </div><!-- top search / contact details --><div class="seven columns"><div class="top-search"><ul><li><a href="#">logout</a>&nbsp;&nbsp;&nbsp;</li><li><img src="images/email-icon-top.jpg" /><a href="#">contact@techkbsol.com</a></li><li><img src="images/phone-icon-top.jpg" />(972) 277 1887</li></ul></div></div><!-- end header -->
+
+
+<!-- Navigation
+======================================= --><!-- main menu --><!-- end main menu --></div><!-- end header container --><!-- page title -->
+<div class="page-main-title"></div><div style="background-color: white;border: 1px solid dfdfdf;">
+<header>
+<div class="nav">
+    <ul id="optionList">
+        <li  ng-repeat="option in Options">
+            <a  data="option_{{option.id}}" class="sd" ng-attr-id="option_{{option.id}}" class="asd" ng-click="selectOption(option.id)" ng-href="#/{{option.path}}"> {{option.name}}</a>
+        </li>
+    </ul>
+     
+
     </div>
+</header>
+<div ng-view class="view-animate"></div>
 </div>
-</form>
-</body>
-</html>
+
+<!-- Footer
+======================================= -->
+
+<div id="page-footer"><div class="copyright-info"><span class="leaft">Copyright © 2014 Tech KB Solutions. All rights reserved.</span><ul class="socials-list"><li><span class="reght"><a href="#" title="facebook"><img src="images/footer-social-icon1.png" alt="" /></a>&nbsp;<a href="#" title="linked in"><img src="images/footer-social-icon5.png" alt="" /></a></span></li></ul></div><!-- end copyright info --></div><!-- end footer --></div>
+
+</body></html>
