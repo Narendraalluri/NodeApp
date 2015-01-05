@@ -1,8 +1,8 @@
-express-upload
+Tech KB TimsSheet App
 ==============
 
-express-upload: node.js, express, multer, easyimage, html5 progress upload example
+Use below command to run in local
 
-##Image Handling
+screen -d -m nodemon server.js local > ../output.log
 
-Uses node module easyimage for thumbnail creation to demonstrate resize upon upload
+and use admin@gmail.com/admin as credentials

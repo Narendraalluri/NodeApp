@@ -31,6 +31,8 @@ else
 //
 
 
+
+
 var fs = require('fs');
 var Sheets = new mongoose.Schema({
     project: String,
@@ -74,6 +76,25 @@ var user = mongoose.model('User', {
     password: String,
     role: String
 });
+
+user.findOne({
+        email: "admin@gmail.com",
+        password: "admin"
+    }, function(err, data) {
+        if(data == null){
+            var newUser = new user;
+            newUser.firstName = "Admin";
+            newUser.lastName = "Admin";
+            newUser.email = "admin@gmail.com";
+            newUser.password = "admin";
+            newUser.role = "admin";
+            newUser.save(function(err1) {
+                console.log("Added admin user")
+            });
+        }
+        
+
+    });
 
 app.get('/viewUserTimesheets', function(req, res) {
 
@@ -306,7 +327,10 @@ app.get('/getLoggedInUser', function(req, res) {
 });
 
 app.post('/loginUser', function(req, res) {
-    console.log(req.body)
+   // console.log(req.body)
+
+
+
     user.findOne({
         email: req.body.email,
         password: req.body.password
