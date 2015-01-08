@@ -26,7 +26,9 @@
   <script src="//code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
 <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular-route.js"></script>
 <script src="js/jquery.fileupload.js"></script>
-<script src="js/app.js"></script>
+
+<script data-main="js/app.js" src="js/require.js"></script>
+
 
 
 <style type="text/css">
@@ -53,7 +55,7 @@
             <a  data="option_{{option.id}}" class="sd" ng-attr-id="option_{{option.id}}" class="asd" ng-click="selectOption(option.id)" ng-href="#/{{option.path}}"> {{option.name}}</a>
         </li>
     </ul>
-     
+
 
     </div>
 </header>
