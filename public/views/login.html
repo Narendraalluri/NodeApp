@@ -1,11 +1,11 @@
 
 
     <div class="container" style="width:400px">
-    
+
     <!-- PAGE HEADER -->
     <div class="page-header"  align="center"><h1>Login</h1></div>
-   
- 
+
+
     <!-- pass in the variable if our form is valid or invalid -->
     <form  name="userForm" ng-submit="submitForm(userForm.$valid,userForm.email,userForm.password  )" novalidate role="form">
        <p class="error" ng-show="loginFailed">Invalid Email/Password.</p>
@@ -20,7 +20,7 @@
 
         <div class="row">
         <div class="form-group" >
-            <label>Password1</label>
+            <label>Password</label>
             <input type="password" name="password" class="form-control" ng-model="user.password">
             <p ng-show="userForm.password.$invalid && !userForm.password.$pristine" class="help-block">Enter a valid password.</p>
         </div>
@@ -30,7 +30,7 @@
         <button type="submit" class="btn btn-primary">Submit</button>
     </div>
     </form>
-    
-    
-    
+
+
+
 </div>
