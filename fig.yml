@@ -1,0 +1,11 @@
+web4:
+  build: .
+  ports:
+    - "8000:8000"
+  links:
+    - db1
+
+db1:
+  image: mongo:2.6
+  ports:    
+    - "27017:27017"

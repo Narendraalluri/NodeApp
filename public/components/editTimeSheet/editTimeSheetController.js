@@ -79,11 +79,11 @@ myApp.controller('editTimeSheetController', function($scope, $http, $location,
       $location.path('/viewTimeSheets')
     }).
     error(function(data, status, headers, config) {
-
+      alert(data)
     });
 
   }
-
+  uploadedFilesArray = [];
   $http.get('/getTimesheet?id=' + $routeParams.timesheetId).
   success(function(data, status, headers, config) {
     $scope.sheetsVal = data[0].sheets;
@@ -94,10 +94,12 @@ myApp.controller('editTimeSheetController', function($scope, $http, $location,
     $scope.timesheet.total = data[0].total;
     $scope.timesheet.comments = data[0].comments;
     $scope.sheetsVal[0].status = true;
-    for (i = 0; i < data[0].uploadedFiles.length; i++)
+    for (i = 0; i < data[0].uploadedFiles.length; i++) {
+      uploadedFilesArray.push(data[0].uploadedFiles[i])
       $("#UploadedFiles").append('<li id="file_' + data[0].uploadedFiles[
           i].id +
-        '"><a href="showFile?originalName=' + data[0].uploadedFiles[i].name +
+        '"><a href="showFile?originalName=' + data[0].uploadedFiles[i]
+        .name +
         '&id=' + data[0].uploadedFiles[i].id + '">' + data[0].uploadedFiles[
           i]
         .name +
@@ -105,6 +107,8 @@ myApp.controller('editTimeSheetController', function($scope, $http, $location,
           i].id +
         '\')"><span class="glyphicon glyphicon-remove"></span></a></li>'
       );
+    }
+
 
 
   }).
