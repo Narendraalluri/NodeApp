@@ -1,0 +1,66 @@
+<div class="container" style="width:400px">
+    <br>
+
+    <form ng-submit="addNewClientInfo(newClientInfo)">
+
+        <p ng-show = "retValue==2">Client added successfully</p>
+        <p ng-show = "retValue==1">Unable to add client.</p>
+        <!-- Client Name -->
+        <div class="form-group"
+             ng-class="{'has-error': newClientInfo.clientName.$invalid &&!newClientInfo.clientName.$pristine} ">
+            <input class="form-control" name="clientName" type="text" placeholder="Client Name" required
+                   ng-model="newClientInfo.clientName"/>
+        </div>
+
+        <!-- Client Address 1 -->
+        <div class="form-group"
+             ng-class="{'has-error': newClientInfo.addr1.$invalid &&!newClientInfo.addr1.$pristine} ">
+            <input class="form-control" name="addr1" type="text" placeholder="Address 1" required
+                   ng-model="newClientInfo.addr1"/>
+        </div>
+
+        <!-- Client Address 2 -->
+        <div class="form-group"
+             ng-class="{'has-error': newClientInfo.addr2.$invalid &&!newClientInfo.addr2.$pristine} ">
+            <input class="form-control" name="addr2" type="text" placeholder="Address 2" required
+                   ng-model="newClientInfo.addr2"/>
+        </div>
+
+        <!-- City -->
+        <div class="form-group"
+             ng-class="{'has-error': newClientInfo.cityName.$invalid && !newClientInfo.cityName.$pristine} ">
+            <input class="form-control" name="cityName" type="text" placeholder="city" required
+                   ng-model="newClientInfo.cityName"/>
+        </div>
+
+        <!-- State -->
+        <div class="form-group">
+            State : &nbsp;<select ng-model="newClientInfo.clientState"
+                                  ng-options="opt as opt.label for opt in stateNames">
+        </select>
+        </div>
+
+        <!-- ZipCode -->
+        <div class="form-group"
+             ng-class="{'has-error': newClientInfo.zipCode.$invalid && !newClientInfo.zipCode.$pristine} ">
+            <input class="form-control" name="zipCode" type="text" placeholder="Zip Code" required
+                   ng-model="newClientInfo.zipCode"/>
+
+            <p ng-show="newClientInfo.zipCode.$invalid && !newClientInfo.zipCode.$pristine" class="help-block"> Enter
+                Zip code</p>
+        </div>
+
+        <!-- Vendors list -->
+        <div class="form-group">
+            Vendor : &nbsp;<select ng-model="newClientInfo.selectedVendor"
+                                   ng-options="opt as opt.vendorName for opt in vendors">
+        </select>
+        </div>
+
+        <div class="form-group" align="center">
+            <button type="submit" class="btn btn-primary"> Save</button>
+            &nbsp; &nbsp;
+            <button type="reset" class="btn btn-danger"> Reset</button>
+        </div>
+    </form>
+</div>

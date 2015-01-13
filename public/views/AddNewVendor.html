@@ -1,0 +1,122 @@
+<div class="container" style="width:600px">
+    <!--<div ng-init="sucessValue=0">-->
+        <!--<div ng-hide="sucessValue==0"></div>-->
+        <!--<div ng-show="sucessValue==1" ng-show="mustShow"-->
+             <!--style="width: 50px; background-color: green; text-align: center;"> Updated a new vendor successfully !!!-->
+        <!--</div>-->
+        <!--<div ng-show="sucessValue==2" ng-show="mustShow"-->
+             <!--style="width: 50px; background-color: red; text-align: center;"> Update failed, please try again later !!!-->
+        <!--</div>-->
+    <!--</div>-->
+
+    <br>
+
+    <form ng-submit="addNewVendorInfo(newVendorDetails)">
+        <h3>Contact address</h3>
+        <!-- Vendor Name -->
+        <div class="form-group"
+             ng-class="{'has-error': newVendorDetails.vendorName.$invalid && !newVendorDetails.vendorName.$pristine} ">
+            <input class="form-control" name="vendorName" type="text" placeholder="Name" required
+                   ng-model="newVendorDetails.vendorName"/>
+        </div>
+
+        <!-- Address 1-->
+        <div class="form-group"
+             ng-class="{'has-error': newVendorDetails.addr1.$invalid && !newVendorDetails.addr1.$pristine} ">
+            <input class="form-control" name="addr1" type="text" placeholder="Address 1" required
+                   ng-model="newVendorDetails.addr1"/>
+        </div>
+
+        <!-- Address 2-->
+        <div class="form-group">
+            <input class="form-control" name="addr2" type="text" placeholder="Address 2 (Optional)"
+                   ng-model="newVendorDetails.addr2"/>
+        </div>
+
+        <!-- City -->
+        <div class="form-group"
+             ng-class="{'has-error': newVendorDetails.cityName.$invalid && !newVendorDetails.cityName.$pristine} ">
+            <input class="form-control" name="cityName" type="text" placeholder="city" required
+                   ng-model="newVendorDetails.cityName"/>
+
+            <p ng-show="newVendorDetails.cityName.$invalid && !newVendorDetails.cityName.$pristine" class="help-block">
+                Enter valid city name</p>
+        </div>
+
+        <!-- State -->
+        <div class="form-group">
+            <select ng-model="newVendorDetails.vendorState"
+                    ng-options="opt as opt.label for opt in stateNames">
+            </select>
+        </div>
+
+        <!-- ZipCode -->
+        <div class="form-group"
+             ng-class="{'has-error': newVendorDetails.zipCode.$invalid && !newVendorDetails.zipCode.$pristine} ">
+            <input class="form-control" name="zipCode" type="text" placeholder="Zip Code" required
+                   ng-model="newVendorDetails.zipCode"/>
+
+            <p ng-show="newVendorDetails.zipCode.$invalid && !newVendorDetails.zipCode.$pristine" class="help-block">
+                Enter Zip code</p>
+        </div>
+
+        <h3>Contact Details</h3>
+        <table class="table table-striped">
+            <tr>
+                <td>
+                    <div class="form-group"
+                         ng-class="{'has-error': newVendorDetails.contactDetails1.contactName.$invalid && !newVendorDetails.contactDetails1.contactName.$pristine}">
+                        <input class="form-control" name="newVendorDetails.contactDetails1.contactName" type="text"
+                               placeholder="Contact Name" required
+                               ng-model="newVendorDetails.contactDetails1.contactName"/>
+                    </div>
+                </td>
+                <td>
+                    <div class="form-group"
+                         ng-class="{'has-error': newVendorDetails.contactDetails1.contactPhNum.$invalid && !newVendorDetails.contactDetails1.contactPhNum.$pristine}">
+                        <input class="form-control" name="newVendorDetails.contactDetails1.contactPhNum" type="text"
+                               placeholder="Phone number" required
+                               ng-model="newVendorDetails.contactDetails1.contactPhNum"/>
+                    </div>
+                </td>
+                <td>
+                    <div class="form-group"
+                         ng-class="{'has-error': newVendorDetails.contactDetails1.emailID.$invalid && !newVendorDetails.contactDetails1.emailID.$pristine}">
+                        <input class="form-control" name="newVendorDetails.contactDetails1.emailID" type="text"
+                               placeholder="Email address" required
+                               ng-model="newVendorDetails.contactDetails1.emailID"/>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <div class="form-group">
+                        <input class="form-control" name="newVendorDetails.contactDetails2.contactName" type="text"
+                               placeholder="Contact name (Optional)"
+                               ng-model="newVendorDetails.contactDetails2.contactName"/>
+                    </div>
+                </td>
+                <td>
+                    <div class="form-group">
+                        <input class="form-control" name="newVendorDetails.contactDetails2.contactPhNum" type="text"
+                               placeholder="Phone number (Optional)"
+                               ng-model="newVendorDetails.contactDetails2.contactPhNum"/>
+                    </div>
+                </td>
+                <td>
+                    <div class="form-group">
+                        <input class="form-control" name="newVendorDetails.contactDetails2.emailID" type="text"
+                               placeholder="Email address (Optional)"
+                               ng-model="newVendorDetails.contactDetails2.emailID"/>
+                    </div>
+                </td>
+            </tr>
+        </table>
+        <div class="form-group" align="center">
+            <button type="submit" class="btn btn-primary"> Save</button>
+            &nbsp; &nbsp;
+            <button type="reset" class="btn btn-danger"> Reset</button>
+        </div>
+    </form>
+    <br>
+</div>

@@ -59,6 +59,19 @@ var commonApi = require('./routes/commonRoutes')(app, {
   'db': dbConnection
 });
 
+//Vendor API
+var vendorApi = require('./routes/vendorService')(app, {
+  'mongoose'  : mongoose,
+  'db'        : dbConnection,
+  'commonApi' : commonApi
+
+});
+
+var clientApi = require('./routes/clientService')(app, {
+  'mongoose'  : mongoose,
+  'db'        : dbConnection,
+  'commonApi' : commonApi
+});
 
 // Binding port
 var server = app.listen(8000, function() {

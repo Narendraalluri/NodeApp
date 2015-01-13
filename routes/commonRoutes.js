@@ -8,5 +8,10 @@ module.exports = function(app, options) {
 
 	app.get('/showOptions', commonController.showOptions);
 
+	var StatesSchema = require('../schemas/StateSchema')(db, mongoose);
+
+	return {
+		"StatesSchema" : StatesSchema
+	}
 
 };
